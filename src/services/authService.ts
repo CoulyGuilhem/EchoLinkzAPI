@@ -7,8 +7,7 @@ const JWT_SECRET = process.env.JWT_SECRET || 'dev_secret_key';
 export const register = async (
     username: string,
     email: string,
-    password: string,
-    location: { type: 'Point'; coordinates: [number, number] }
+    password: string
 ) => {
   const existingUser = await User.findOne({ $or: [{ email }, { username }] });
   if (existingUser) {
@@ -20,8 +19,7 @@ export const register = async (
   const newUser = await User.create({
     username,
     email,
-    passwordHash,
-    location,
+    passwordHash
   });
 
   const token = jwt.sign({ userId: newUser._id }, JWT_SECRET, {
@@ -33,8 +31,7 @@ export const register = async (
     user: {
       id: newUser._id,
       username: newUser.username,
-      email: newUser.email,
-      location: newUser.location,
+      email: newUser.email
     },
   };
 };
@@ -55,8 +52,7 @@ export const login = async (email: string, password: string) => {
     user: {
       id: user._id,
       username: user.username,
-      email: user.email,
-      location: user.location,
+      email: user.email
     },
   };
 };

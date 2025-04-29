@@ -3,8 +3,8 @@ import { register, login } from "../services/authService";
 
 const signup = async (req: Request, res: Response) => {
   try {
-    const { username, email, password, location } = req.body;
-    const { token, user } = await register(username, email, password, location);
+    const { username, email, password } = req.body;
+    const { token, user } = await register(username, email, password);
     res.status(201).json({ token, user });
   } catch (error) {
     if (error instanceof Error) {
@@ -17,7 +17,6 @@ const signup = async (req: Request, res: Response) => {
     }
   }
 };
-
 
 const signin = async (req: Request, res: Response) => {
   try {
