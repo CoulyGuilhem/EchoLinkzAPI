@@ -1,2 +1,0 @@
-# EchoLinkzAPI
-API EchoLinkz
