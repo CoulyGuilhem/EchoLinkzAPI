@@ -16,7 +16,9 @@ app.use(bodyParser.json());
 app.use("/api/auth", authRoutes);
 
 mongoose
-  .connect(process.env.MONGODB_URI as string)
+  .connect(process.env.MONGODB_URI as string, {
+    dbName: 'EchoLinkz'
+  })
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.log(err));
 
