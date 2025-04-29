@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import authRoutes from "./routes/authRoutes";
+import reportRoutes from './routes/reportRoutes';
 import dotenv from "dotenv";
 import cors from "cors";
 
@@ -14,6 +15,8 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.use("/api/auth", authRoutes);
+app.use('/api/reports', reportRoutes);
+
 
 mongoose
   .connect(process.env.MONGODB_URI as string, {
