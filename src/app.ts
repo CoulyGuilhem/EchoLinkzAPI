@@ -9,7 +9,9 @@ import { initSocketServer } from './socketServer';
 import authRoutes from './routes/authRoutes';
 import reportRoutes from './routes/reportRoutes';
 import responseRoutes from './routes/responseRoutes';
-import messageRoutes from './routes/messageRoutes'; // pour récupérer les messages
+import messageRoutes from './routes/messageRoutes';
+import chatRoutes from './routes/chatRoutes';
+
 
 dotenv.config();
 
@@ -22,6 +24,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/reports', reportRoutes);
 app.use('/api/responses', responseRoutes);
 app.use('/api/messages', messageRoutes);
+app.use('/api/chat', chatRoutes);
 
 // Créer un serveur HTTP à partir d'Express
 const server = http.createServer(app);
